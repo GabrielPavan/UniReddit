@@ -9,5 +9,4 @@ public class UniredditApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(UniredditApplication.class, args);
 	}
-
 }

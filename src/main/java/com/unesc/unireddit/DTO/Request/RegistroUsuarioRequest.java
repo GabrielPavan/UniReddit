@@ -1,4 +1,4 @@
-package com.unesc.unireddit.DTO;
+package com.unesc.unireddit.DTO.Request;
 
 import com.unesc.unireddit.Model.UsuarioRole;
 import jakarta.validation.constraints.NotEmpty;
