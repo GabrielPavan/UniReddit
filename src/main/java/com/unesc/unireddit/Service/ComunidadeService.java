@@ -70,4 +70,12 @@ public class ComunidadeService {
                         c.getCreateAt()))
                 .collect(Collectors.toList());
     }
+
+    public void deletar(Long id) {
+        if (!repository.existsById(id)) {
+            throw new RuntimeException("Comunidade não encontrada");
+        }
+        repository.deleteById(id);
+    }
+
 }

@@ -1,6 +1,7 @@
 package com.unesc.unireddit.Controller;
 
 import com.unesc.unireddit.DTO.ComunidadeResponseDTO;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.unesc.unireddit.DTO.ComunidadeDTO;
@@ -20,10 +21,11 @@ public class ComunidadeController {
 
     // Criar comunidade
     @PostMapping
-    public ResponseEntity<ComunidadeResponseDTO> criar(@RequestBody ComunidadeDTO dto) {
+    public ResponseEntity<ComunidadeResponseDTO> criar(@RequestBody @Valid ComunidadeDTO dto) {
         ComunidadeResponseDTO response = service.criarComunidade(dto);
         return ResponseEntity.ok(response);
     }
+
 
     // Listar todas
     @GetMapping
@@ -42,4 +44,11 @@ public class ComunidadeController {
     public ResponseEntity<List<ComunidadeResponseDTO>> buscarPorNome(@RequestParam String nome) {
         return ResponseEntity.ok(service.buscarPorNome(nome));
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deletar(@PathVariable Long id) {
+        service.deletar(id);
+        return ResponseEntity.noContent().build();
+    }
+
 }
