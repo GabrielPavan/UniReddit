@@ -5,6 +5,7 @@ CREATE TABLE tb_comunidades(
     create_at TIMESTAMP NOT NULL DEFAULT NOW(),
     is_private BOOLEAN DEFAULT FALSE
 );
+
 CREATE TABLE tb_usuarios(
     id BIGSERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
@@ -12,6 +13,7 @@ CREATE TABLE tb_usuarios(
     password VARCHAR(255) NOT NULL,
     create_at TIMESTAMP NOT NULL DEFAULT NOW(),
 );
+
 CREATE TABLE tb_usuarios_roles(
     usuario_id BIGSERIAL NOT NULL,
     role VARCHAR(50) NOT NULL,

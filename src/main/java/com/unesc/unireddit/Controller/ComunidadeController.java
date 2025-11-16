@@ -51,4 +51,14 @@ public class ComunidadeController {
         return ResponseEntity.noContent().build();
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<ComunidadeResponseDTO> atualizar(
+            @PathVariable Long id,
+            @RequestBody @Valid ComunidadeDTO dto) {
+
+        ComunidadeResponseDTO response = service.atualizar(id, dto);
+        return ResponseEntity.ok(response);
+    }
+
+
 }

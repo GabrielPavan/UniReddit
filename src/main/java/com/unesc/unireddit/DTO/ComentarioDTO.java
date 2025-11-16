@@ -1,6 +1,10 @@
 package com.unesc.unireddit.DTO;
 
+import jakarta.validation.constraints.NotBlank;
+
 public class ComentarioDTO {
+
+    @NotBlank(message = "O titulo é obrigatório")
     private String conteudo;
     private Long postagemId;
     private Long parentId;

@@ -78,4 +78,24 @@ public class ComunidadeService {
         repository.deleteById(id);
     }
 
+    public ComunidadeResponseDTO atualizar(Long id, ComunidadeDTO dto) {
+        ComunidadeModel comunidade = repository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Comunidade não encontrada"));
+
+        comunidade.setName(dto.getName());
+        comunidade.setDescription(dto.getDescription());
+        comunidade.setPrivate(dto.isPrivate());
+
+        ComunidadeModel salva = repository.save(comunidade);
+
+        return new ComunidadeResponseDTO(
+                salva.getId(),
+                salva.getName(),
+                salva.getDescription(),
+                salva.isPrivate(),
+                salva.getCreateAt()
+        );
+    }
+
+
 }

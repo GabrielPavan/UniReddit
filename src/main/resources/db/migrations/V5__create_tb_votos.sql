@@ -1,10 +1,7 @@
-CREATE TABLE tb_postagem (
+create table tb_votos(
     id              BIGSERIAL PRIMARY KEY,
-    titulo          VARCHAR(255) NOT NULL,
-    conteudo        TEXT NOT NULL,
+    tipo            VARCHAR(15) NOT NULL,
     criada_em       TIMESTAMP DEFAULT NOW(),
-    atualizada_em   TIMESTAMP DEFAULT NOW(),
-
     comunidade_id   BIGINT NOT NULL,
     autor_id        BIGINT NOT NULL,
 
@@ -13,4 +10,4 @@ CREATE TABLE tb_postagem (
 
     CONSTRAINT fk_postagem_usuario FOREIGN KEY (autor_id)
         REFERENCES tb_usuario(id)
-);
+)

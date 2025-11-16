@@ -2,13 +2,15 @@ package com.unesc.unireddit.DTO;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 public class PostagemDTO {
 
-    @NotBlank
+    @NotBlank(message = "O titulo é obrigatório")
+    @Size(max = 100, message = "O titulo pode ter no máximo 100 caracteres")
     private String titulo;
 
-    @NotBlank
+    @NotBlank(message = "A descrição é obrigatório")
     private String conteudo;
 
     @NotNull
