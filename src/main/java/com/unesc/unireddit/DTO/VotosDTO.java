@@ -1,10 +1,14 @@
 package com.unesc.unireddit.DTO;
 
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 
 public class VotosDTO {
     @NotNull(message = "O tipo é obrigatório")
-    private int tipo; // 1, 2, etc.
+    @Min(value = 0, message = "Tipo inválido, só é permitido 0 ou 1")
+    @Max(value = 1, message = "Tipo inválido, só é permitido 0 ou 1")
+    private Integer tipo;
 
     @NotNull(message = "O usuário é obrigatório")
     private Long usuarioId;
@@ -14,7 +18,7 @@ public class VotosDTO {
 
     // getters e setters
 
-    public int getTipo() {
+    public Integer getTipo() {
         return tipo;
     }
 

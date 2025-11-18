@@ -7,8 +7,8 @@ public enum TipoVoto {
 
     public static TipoVoto fromInt(int valor) {
         return switch (valor) {
+            case 0 -> DOWNVOTE;
             case 1 -> UPVOTE;
-            case 2 -> DOWNVOTE;
             default -> INDEFINIDO;
         };
     }

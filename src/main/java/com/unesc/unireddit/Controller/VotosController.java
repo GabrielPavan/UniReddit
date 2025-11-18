@@ -3,6 +3,7 @@ package com.unesc.unireddit.Controller;
 import com.unesc.unireddit.DTO.VotosDTO;
 import com.unesc.unireddit.Model.VotosModel;
 import com.unesc.unireddit.Service.VotosService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,7 +19,7 @@ public class VotosController {
     }
 
     @PostMapping
-    public VotosModel criar(@RequestBody VotosDTO dto) {
+    public VotosModel criar(@Valid  @RequestBody VotosDTO dto) {
         return service.salvar(dto);
     }
 

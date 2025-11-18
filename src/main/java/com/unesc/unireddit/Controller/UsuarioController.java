@@ -20,7 +20,7 @@ public class UsuarioController {
     public UsuarioResponseDTO buscarPorId(@PathVariable Long id) {
         return usuarioService.BuscarPorId(id);
     }
-    @GetMapping("/{mail}")
+    @GetMapping("/mail/{mail}")
     public UsuarioResponseDTO buscarPorMail(@PathVariable String mail) { return usuarioService.BuscarPorMail(mail); }
     @GetMapping
     public List<UsuarioResponseDTO> listar() {
