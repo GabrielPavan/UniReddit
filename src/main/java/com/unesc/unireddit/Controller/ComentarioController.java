@@ -23,13 +23,19 @@ public class ComentarioController {
         return comentarioService.criarComentario(dto);
     }
 
-    // Listar comentários principais de uma postagem (com sub-respostas)
+    // Atualizar comentário
+    @PutMapping("/{id}")
+    public ComentarioResponseDTO atualizar(@PathVariable Long id, @RequestBody ComentarioDTO dto) {
+        return comentarioService.atualizarComentario(id, dto);
+    }
+
+    // Listar comentários principais de uma postagem com sub-respostas
     @GetMapping("/postagem/{postagemId}")
     public List<ComentarioResponseDTO> listarPorPostagem(@PathVariable Long postagemId) {
         return comentarioService.listarPorPostagem(postagemId);
     }
 
-    // Listar respostas de um comentário específico (toda a árvore)
+    // Listar respostas de um comentário específico
     @GetMapping("/{id}/respostas")
     public List<ComentarioResponseDTO> listarRespostas(@PathVariable Long id) {
         return comentarioService.listarRespostas(id);

@@ -2,6 +2,8 @@ package com.unesc.unireddit.Model;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "tb_comentario")
@@ -16,17 +18,21 @@ public class ComentarioModel {
     @Column(name = "create_at")
     private LocalDateTime createAt = LocalDateTime.now();
 
-    // Comentário pai → para hierarquia de respostas
+    // Comentário pai
     @ManyToOne
     @JoinColumn(name = "parent_id")
     private ComentarioModel parent;
+
+    // LISTA DE SUB-RESPOSTAS
+    @OneToMany(mappedBy = "parent", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ComentarioModel> subRespostas = new ArrayList<>();
 
     // Associação com a postagem
     @ManyToOne
     @JoinColumn(name = "postagem_id")
     private PostagemModel postagem;
 
-    // Associação com o usuário autor
+    // Associação com o usuário
     @ManyToOne
     @JoinColumn(name = "usuario_id")
     private UsuarioModel usuario;
@@ -43,6 +49,9 @@ public class ComentarioModel {
 
     public ComentarioModel getParent() { return parent; }
     public void setParent(ComentarioModel parent) { this.parent = parent; }
+
+    public List<ComentarioModel> getSubRespostas() { return subRespostas; }
+    public void setSubRespostas(List<ComentarioModel> subRespostas) { this.subRespostas = subRespostas; }
 
     public PostagemModel getPostagem() { return postagem; }
     public void setPostagem(PostagemModel postagem) { this.postagem = postagem; }
